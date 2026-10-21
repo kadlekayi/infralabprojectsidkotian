@@ -1,0 +1,442 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VIDHANA SOUDHA OFFICE AESTHETIC
+   A government office desk: rich teak wood, aged paper,
+   official seals, file folders, and the weight of state.
+   ============================================================ */
+
+:root {
+  /* Karnataka government palette */
+  --karnataka-red: #9b1c1c;
+  --karnataka-gold: #b8860b;
+  --karnataka-cream: #f5f0e1;
+  --karnataka-paper: #f4ecd8;
+  --karnataka-ink: #1a1a1a;
+  --karnataka-wood-dark: #3d2914;
+  --karnataka-wood: #5c4033;
+  --karnataka-wood-light: #8b6f47;
+  --karnataka-brass: #c9a227;
+  --karnataka-seal-red: #8b0000;
+}
+
+/* Base: rich wood desk background with subtle grain */
+body {
+  background:
+    /* Wood grain texture overlay */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(0,0,0,0.08) 80px,
+      rgba(0,0,0,0.08) 82px
+    ),
+    /* Radial vignette for depth */
+    radial-gradient(ellipse at center, rgba(92,64,51,0.9) 0%, rgba(61,41,20,0.95) 100%);
+  background-attachment: fixed;
+  color: var(--karnataka-cream);
+  font-family: "Georgia", "Times New Roman", "Noto Serif Kannada", serif;
+  min-height: 100vh;
+}
+
+/* Paper document texture */
+.paper-texture {
+  background:
+    /* Subtle paper fibers */
+    radial-gradient(circle at 20% 80%, rgba(139,111,71,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139,111,71,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.02) 0%, transparent 50%),
+    /* Aged paper color */
+    linear-gradient(135deg, #f4ecd8 0%, #ede3c8 50%, #e6d9b8 100%);
+  box-shadow:
+    inset 0 0 60px rgba(139,111,71,0.1),
+    0 4px 6px rgba(0,0,0,0.3),
+    0 10px 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Paper with deckled edge effect */
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.05) 0%, transparent 2%, transparent 98%, rgba(0,0,0,0.05) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, transparent 2%, transparent 98%, rgba(0,0,0,0.05) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Official letterhead header */
+.letterhead {
+  background: linear-gradient(to bottom, var(--karnataka-cream) 0%, #f0e6cc 100%);
+  border-bottom: 3px double var(--karnataka-gold);
+  position: relative;
+}
+
+.letterhead::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--karnataka-red);
+}
+
+/* Government of Karnataka masthead */
+.govt-masthead {
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(to bottom, #faf6e8 0%, #f4ecd8 100%);
+  border-bottom: 2px solid var(--karnataka-gold);
+}
+
+.govt-masthead .emblem {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.govt-masthead .title {
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  color: var(--karnataka-red);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.govt-masthead .subtitle {
+  font-family: "Georgia", serif;
+  color: #5c4033;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+/* File folder tab */
+.file-folder {
+  position: relative;
+  background: linear-gradient(135deg, #d4a574 0%, #c19a6b 100%);
+  border-radius: 4px 4px 0 0;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
+}
+
+.file-folder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+  border-radius: 4px 0 0 0;
+}
+
+/* Rubber stamp effect */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--karnataka-seal-red);
+  border-radius: 50%;
+  color: var(--karnataka-seal-red);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+  font-family: "Georgia", serif;
+  box-shadow: inset 0 0 10px rgba(139,0,0,0.2);
+}
+
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--karnataka-seal-red);
+  border-radius: 50%;
+}
+
+/* Official seal (circular, with text) */
+.official-seal {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--karnataka-seal-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--karnataka-seal-red);
+  font-size: 10px;
+  text-align: center;
+  font-weight: bold;
+  transform: rotate(-15deg);
+  opacity: 0.8;
+  background: radial-gradient(circle, rgba(139,0,0,0.05) 0%, transparent 70%);
+}
+
+.official-seal::before {
+  content: "★";
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.3;
+}
+
+/* Desk nameplate */
+.nameplate {
+  background: linear-gradient(135deg, #c9a227 0%, #a8861d 50%, #c9a227 100%);
+  color: #2a1a0a;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  position: relative;
+}
+
+.nameplate::before,
+.nameplate::after {
+  content: "●";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  color: #6b5518;
+}
+
+.nameplate::before { left: 0.5rem; }
+.nameplate::after { right: 0.5rem; }
+
+/* Wooden desk panel/frame */
+.desk-panel {
+  background:
+    linear-gradient(135deg, #6b4f3a 0%, #5c4033 50%, #4a3328 100%);
+  border: 8px solid #3d2914;
+  border-radius: 8px;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.1),
+    inset 0 -2px 4px rgba(0,0,0,0.3),
+    0 8px 16px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.desk-panel::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(139,111,71,0.3);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Ink pen cursor effect for interactive elements */
+.ink-hover:hover {
+  text-shadow: 0 0 8px rgba(184,134,11,0.4);
+}
+
+/* Typewriter font for official documents */
+.typewriter {
+  font-family: "Courier New", "Courier", monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Red ink for official markings */
+.red-ink {
+  color: var(--karnataka-seal-red);
+}
+
+/* Gold accent for important elements */
+.gold-accent {
+  color: var(--karnataka-gold);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* File number tag */
+.file-number {
+  font-family: "Courier New", monospace;
+  font-size: 0.75rem;
+  color: #5c4033;
+  background: rgba(139,111,71,0.1);
+  padding: 0.125rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid rgba(139,111,71,0.2);
+}
+
+/* Confidential/Priority marking */
+.confidential-stamp {
+  display: inline-block;
+  border: 2px solid var(--karnataka-seal-red);
+  color: var(--karnataka-seal-red);
+  padding: 0.125rem 0.75rem;
+  font-size: 0.625rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transform: rotate(-3deg);
+  opacity: 0.7;
+}
+
+/* Paper clip */
+.paper-clip {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  width: 20px;
+  height: 40px;
+  border: 3px solid #888;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: transparent;
+}
+
+/* Coffee stain (subtle, for realism) */
+.coffee-stain {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(92,64,51,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Desk drawer handle */
+.drawer-handle {
+  width: 60px;
+  height: 8px;
+  background: linear-gradient(to bottom, #c9a227 0%, #a8861d 50%, #c9a227 100%);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Official document card */
+.doc-card {
+  background: var(--karnataka-paper);
+  color: var(--karnataka-ink);
+  border-radius: 2px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.2),
+    0 8px 16px rgba(0,0,0,0.15);
+  position: relative;
+  padding: 1.5rem;
+}
+
+.doc-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--karnataka-red) 0%, var(--karnataka-gold) 50%, var(--karnataka-red) 100%);
+}
+
+/* Vidhana Soudha dome silhouette (decorative) */
+.vidhana-dome {
+  width: 100%;
+  height: 60px;
+  background:
+    radial-gradient(ellipse 80px 60px at 50% 100%, transparent 49%, var(--karnataka-wood-light) 50%, var(--karnataka-wood-light) 100%);
+  position: relative;
+  opacity: 0.3;
+}
+
+.vidhana-dome::before {
+  content: "🏛️";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  opacity: 0.2;
+}
+
+/* Scrollbar styling for the desk aesthetic */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--karnataka-wood-dark);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--karnataka-wood-light) 0%, var(--karnataka-wood) 100%);
+  border-radius: 6px;
+  border: 2px solid var(--karnataka-wood-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--karnataka-gold) 0%, var(--karnataka-wood-light) 100%);
+}
+
+/* Selection color */
+::selection {
+  background: var(--karnataka-gold);
+  color: var(--karnataka-ink);
+}
+
+/* Karnataka flag colors accent bar */
+.karnataka-accent-bar {
+  height: 4px;
+  background: linear-gradient(to right, #ffd700 0%, #ffd700 50%, #c41e3a 50%, #c41e3a 100%);
+}
+
+/* Official form field styling */
+.form-field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #5c4033;
+  color: var(--karnataka-ink);
+  font-family: "Courier New", monospace;
+  padding: 0.25rem 0;
+  outline: none;
+}
+
+.form-field:focus {
+  border-bottom-color: var(--karnataka-gold);
+  box-shadow: 0 1px 0 var(--karnataka-gold);
+}
+
+/* Paper texture for dark mode adaptation */
+.dark-paper {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(139,111,71,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139,111,71,0.08) 0%, transparent 50%),
+    linear-gradient(135deg, #2a2520 0%, #241f1a 50%, #1f1a15 100%);
+  color: var(--karnataka-cream);
+}
+
+/* Brass plaque */
+.brass-plaque {
+  background: linear-gradient(135deg, #d4af37 0%, #c9a227 50%, #b8960f 100%);
+  color: #2a1a0a;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.4),
+    inset 0 -2px 0 rgba(0,0,0,0.2),
+    0 4px 8px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}
